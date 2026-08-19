@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
+import { mockAuthService, getUsers } from '../services/mockDataService';
 
 const AuthContext = createContext();
 
@@ -37,14 +38,19 @@ export function AuthProvider({ children }) {
     return newUser;
   };
 
-  const demoLogin = async (userId, role) => {
-    const res = await api.post('/auth/demo-login', { userId, role });
-    const { token: newToken, user: newUser } = res.data;
-    setToken(newToken);
-    setUser(newUser);
-    localStorage.setItem('sih_token', newToken);
-    localStorage.setItem('sih_user', JSON.stringify(newUser));
-    return newUser;
+  const demoLogin = async (role) => {
+    let email = 'student@example.com';
+    let password = 'student123';
+
+    if (role === 'teacher') {
+      email = 'teacher@example.com';
+      password = 'teacher123';
+    } else if (role === 'admin') {
+      email = 'admin@example.com';
+      password = 'admin123';
+    }
+
+    return await login(email, password, role);
   };
 
   const logout = () => {
@@ -52,6 +58,7 @@ export function AuthProvider({ children }) {
     setUser(null);
     localStorage.removeItem('sih_token');
     localStorage.removeItem('sih_user');
+    mockAuthService.logout();
   };
 
   return (

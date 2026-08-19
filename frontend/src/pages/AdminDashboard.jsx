@@ -60,14 +60,30 @@ export default function AdminDashboard() {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsUserModalOpen(true)}
-          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all shadow-md shadow-amber-500/20"
-        >
-          <Plus className="w-4 h-4" />
-          <span>{t('createUser')}</span>
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => setIsUserModalOpen(true)}
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all shadow-md shadow-amber-500/20 cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>{t('createUser')}</span>
+          </button>
+          <button
+            onClick={() => {
+              if (window.confirm('Are you sure you want to reset all demo data to initial seed defaults?')) {
+                api.post('/admin/reset-demo').then(() => {
+                  alert('Demo data restored successfully!');
+                  fetchAdminData();
+                });
+              }
+            }}
+            className="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-rose-900/80 hover:bg-rose-900 text-rose-200 border border-rose-700/50 text-xs font-semibold transition-all cursor-pointer"
+          >
+            <span>Reset Demo Data</span>
+          </button>
+        </div>
       </div>
+
 
       {/* Aggregate Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

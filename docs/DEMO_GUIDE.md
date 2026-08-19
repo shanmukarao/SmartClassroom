@@ -1,54 +1,77 @@
-# SIH Judge Demonstration Guide
+# SIH Judge Demonstration Guide — Inclusive Smart Classroom
 
-Follow this step-by-step demonstration script to present the complete end-to-end working prototype during Smart India Hackathon judging:
+Follow this step-by-step demonstration script during Smart India Hackathon judging to showcase the complete working prototype:
 
 ---
 
-## 🎬 End-to-End Demonstration Workflow
+## 🎬 Step-by-Step SIH Demonstration Script
 
-### Step 1: Login & Student Experience (Rahul Kumar)
-1. Open the application in browser (`http://localhost:3000`).
-2. Click the **"Rahul Kumar (Student)"** quick sign-in button or enter:
-   - Email: `student.rahul@classroom.edu`
-   - Password: `student123`
-3. Observe the **Student Dashboard**:
-   - Enrolled classes schedule.
-   - Personal learning progress metrics (Attendance 92%, Assessment Avg 88%).
-   - Active Missed Class alert banner.
+### STEP 1 — STUDENT LOGIN
+1. Open the application landing page.
+2. Click **"Login as Student"** (or enter Email: `student@example.com` / Password: `student123`).
+3. View the **Student Dashboard**:
+   - Registered class schedule (Data Structures, DBMS, OS).
+   - Personal attendance rate (92%) and quiz average (86%).
+   - Missed class continuity package banner (*Data Structures — Recursion*).
+   - Note: Zero public student rankings or comparisons.
 
-### Step 2: Private Ask for Help Workflow
-1. Click the golden **"Ask for Private Help"** button.
-2. Select Class: `Grade 10 Mathematics - Section A`.
-3. Select Topic Area: `Trigonometric Identities`.
-4. Enter Description: *"Need extra practice problems for chapter 4 proofs."*
-5. Click **Submit**. Observe the confirmation notice assuring student privacy and confidentiality.
+---
 
-### Step 3: Class Continuity Catch-Up Package
-1. On the Student Dashboard, find the missed class package: **"Quadratic Equations & Roots (Missed Class Catch-Up)"**.
-2. Click **"Complete Catch-Up Tasks"**.
-3. View the lecture summary notes and checklist of reading, video, and quiz tasks.
-4. Check off tasks (e.g. *"Watch 12-minute Video Explanation of Completing the Square"*).
-5. Watch the progress bar instantly increment to **100% Completed** and save to the database.
+### STEP 2 — SUBMIT PRIVATE "ASK FOR HELP"
+1. Click the **"Ask for Help"** button.
+2. Select Subject: `Data Structures — CSE A`.
+3. Select Topic Area: `Recursion`.
+4. Enter Description: *"I don't understand how recursive call stack unwinding works."*
+5. Click **Submit**.
+6. Observe confirmation message: *"Your request has been submitted privately."*
+7. Request is saved directly to `localStorage`.
 
-### Step 4: Multilingual Language Switch
-1. Click the **Language** button in the top navigation bar.
-2. Switch to **తెలుగు (Telugu)**.
-3. Observe instant UI translation across dashboard headings, buttons, and help forms.
-4. Switch back to **English**.
+---
 
-### Step 5: Teacher Dashboard Experience (Prof. Sharma)
-1. Logout and click **"Prof. Sharma (Teacher)"** sign-in:
-   - Email: `teacher.sharma@classroom.edu`
-   - Password: `teacher123`
-2. Observe the **Aggregated Topic Confusion Chart** (Recharts visualization):
-   - Shows topics with highest help requests (Quadratic Equations, Trigonometric Identities) **without exposing individual student names by default**.
-3. Review the **Authorized Private Support Signals**:
-   - Locate the assistive alert for Priya Patel (*Classroom Continuity & Attendance*).
-   - Read compulsory disclaimer: *"Notice: This is an assistive signal, not a diagnosis."*
-   - Click **"Mark Reviewed"**.
+### STEP 3 — TEACHER LOGIN & AGGREGATED HELP INSIGHTS
+1. Click **Logout**, then click **"Login as Teacher"** (`teacher@example.com` / `teacher123`).
+2. Navigate to **Aggregated Help Insights** / **Topic Confusion Chart**.
+3. View Topic Confusion:
+   - Notice: **"7 students requested clarification on Recursion"** is displayed at the topic aggregate level.
+   - **Privacy Principle**: The individual student's identity is NOT publicly displayed or ranked.
 
-### Step 6: Admin Platform Overview
-1. Logout and sign in as **Admin**:
-   - Email: `admin@classroom.edu`
-   - Password: `admin123`
-2. View platform aggregate analytics, classroom utilization percentages, and user management tools.
+---
+
+### STEP 4 — PRIVATE SUPPORT SIGNAL CHECK
+1. View the **Authorized Private Support Signals** section on the Teacher Dashboard.
+2. Locate the realistic assistive support signal:
+   - Alert: *"This student shows a recent decline in participation and performance. Consider checking in."*
+   - Mandatory Disclaimer: *"This is an assistive signal, not a diagnosis."*
+3. Verify that only the authorized teacher can view individual support signals.
+
+---
+
+### STEP 5 — CREATE CLASS CONTINUITY PACKAGE
+1. Click **"Create Continuity Package"**.
+2. Select Class: `Data Structures — CSE A`.
+3. Title: `Data Structures — Recursion`.
+4. Add summary notes, lecture video link, assignment details, and checklist items:
+   - [ ] Read lecture notes on Recursion & Call Stacks
+   - [ ] Review resource video (15 mins)
+   - [ ] Complete 3 recursion practice exercises
+   - [ ] Review key concepts & self-check base case logic
+5. Click **Save**.
+
+---
+
+### STEP 6 — ABSENT STUDENT CATCH-UP & PROGRESS
+1. Logout and log in as absent Student (`student@example.com`).
+2. Navigate to **Missed Classes** / **Continuity Packages**.
+3. Open package: **Data Structures — Recursion**.
+4. Check off checklist tasks one by one:
+   - Progress bar updates dynamically: **0/4 (0%) → 1/4 (25%) → 2/4 (50%) → 3/4 (75%) → 4/4 (100%)**.
+5. Displays **"100% Completed — Catch-up complete."**
+
+---
+
+### STEP 7 — CLASSROOM ANALYTICS & DEMO RESET
+1. Logout and log in as **Admin** (`admin@example.com` / `admin123`).
+2. View **Admin Dashboard**:
+   - Institutional classroom utilization table, aggregate attendance, total help requests.
+   - Note: No public student rankings or comparative leaderboards.
+3. Test **Reset Demo Data** button in top header to restore initial seed state for the next judge evaluation.

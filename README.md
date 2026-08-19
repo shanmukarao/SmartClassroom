@@ -1,70 +1,72 @@
 # Inclusive Smart Classroom Platform (SIH Prototype)
 
+> **SIH PS ID:** NRIIT-EDU-01  
 > **Theme:** Smart Education  
-> **Problem Statement:** Smart Classroom Management Software  
-> **Principle:** Adapt classroom support to individual needs without publicly labeling, ranking, or comparing students.
+> **Core Principle:** "A smart classroom that adapts to student needs without compromising their privacy or dignity."
 
-The **Inclusive Smart Classroom Management Platform** is a full-stack, privacy-aware smart education system designed for the Smart India Hackathon (SIH). It goes beyond traditional college ERP systems by focusing on privacy-aware support signals, confidential student help requests, class continuity packages for missed classes, and inclusive accessibility preferences.
+The **Inclusive Smart Classroom Management Platform** is a 100% standalone, browser-native smart education web prototype built for the Smart India Hackathon (SIH). It runs entirely in the browser using a LocalStorage service layer with zero backend or API server dependencies, making it deployable directly to **GitHub Pages**.
 
 ---
 
 ## 🌟 Key Features & Core Differentiators
 
-1. **Privacy-Aware Support Signals**: Automated deterministic engine detecting negative activity/performance drops (attendance shifts, assessment drops) and generating private assistive alerts for authorized teachers with compulsory disclaimers (*"This is an assistive signal, not a diagnosis."*).
-2. **Private Ask for Help System**: Students confidentially submit questions on specific topics. Teachers see aggregated classroom confusion trends by default, with controlled private follow-up access.
-3. **Class Continuity Packages**: Teachers publish structured catch-up packages for missed classes containing lecture summary notes, reading links, videos, assignments, and quizzes. Students mark tasks complete and track progress %.
-4. **Inclusive Classroom Preferences**: Students manage language (English / Telugu), captioning, visual preferences, and notes. Teachers receive actionable accessibility insights without unnecessary personal data exposure.
-5. **Multilingual UI (English & Telugu)**: Instant interface language switching across all pages.
-6. **Role-Based Access Control**: Scoped portals for **Student**, **Teacher**, and **Admin**.
+1. **Private "Ask for Help" System**: Students confidentially submit topic-specific questions. Teachers see aggregated classroom confusion insights (e.g., *"7 students requested clarification on Recursion"*) without publicly exposing student identities.
+2. **Privacy-Aware Support Signals**: Deterministic engine analyzing attendance, participation, and continuous assessment trends to generate assistive alerts for authorized teachers (e.g., *"This student shows a recent decline in participation and performance. Consider checking in."*). Includes mandatory disclaimers (*"This is an assistive signal, not a diagnosis."*).
+3. **Class Continuity Packages**: Structured catch-up packages for missed classes containing summary notes, resource links, assignments, and interactive checklists. Students track real-time catch-up progress (0% to 100%).
+4. **Inclusive Classroom Preferences**: Non-sensitive accessibility preferences (language preference, captions, visual/audio/text format, high contrast) configurable by students and visible to teachers for classroom planning.
+5. **Multilingual Support**: Centralized English (`en.js`) and Telugu (`te.js`) dictionary with instant one-click language switching.
+6. **Role-Based Access Control**: Scoped, role-protected portals for **Student**, **Teacher**, and **Admin**.
+7. **Demo Data Reset**: One-click action in Admin/Settings to restore initial seed data anytime for repeatable demonstrations.
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Technology Stack & Architecture
 
-- **Frontend**: React (Vite), React Router v6, Lucide Icons, Recharts, Tailwind CSS.
-- **Backend**: Node.js, Express.js REST API, JWT Authentication, bcrypt password hashing.
-- **Database**: SQLite3 (normalized database abstraction layer).
+- **Frontend Core**: React 18 (Vite), React Router v6, Tailwind CSS, Lucide Icons, Recharts.
+- **Data & Mock Service Layer**: LocalStorage Data Persistence (`mockDataService.js` / `seedData.js`). Zero REST backend, zero Express, zero external databases.
+- **Deployment**: Configured with relative asset paths (`base: './'`) for static deployment on **GitHub Pages**.
 
 ---
 
-## 🚀 Quick Start & Environment Setup
+## 🔑 Demo Credentials
 
-### 1. Backend Setup
+| Role | Email | Password | Quick Workflow |
+| :--- | :--- | :--- | :--- |
+| **Student** | `student@example.com` | `student123` | Rahul Sharma (CSE-A) • Ask for Help & Missed Class Catch-Up |
+| **Teacher** | `teacher@example.com` | `teacher123` | Dr. A. Sharma (CSE) • Aggregated Help Insights & Support Signals |
+| **Admin** | `admin@example.com` | `admin123` | System Administrator • Institutional Analytics & Data Reset |
 
-```bash
-cd backend
-npm install
-npm run seed
-npm start
-```
-The backend API will start at `http://localhost:5000`.
+---
 
-### 2. Frontend Setup
-
-In a new terminal window:
+## 🚀 How to Run Locally
 
 ```bash
+# Navigate to the frontend directory
 cd frontend
+
+# Install dependencies
 npm install
+
+# Start Vite dev server
 npm run dev
 ```
-The Vite development server will start at `http://localhost:3000`.
+Open `http://localhost:3000` in your browser.
 
 ---
 
-## 🔑 Pre-Configured Demo Credentials
+## 📦 How to Deploy to GitHub Pages
 
-| Role | Email | Password | Workflow Highlight |
-| :--- | :--- | :--- | :--- |
-| **Student** | `student.rahul@classroom.edu` | `student123` | Missed class continuity package completion |
-| **Student** | `student.ananya@classroom.edu` | `student123` | Private help request submission |
-| **Student** | `student.priya@classroom.edu` | `student123` | Privacy-aware assistive signal trigger |
-| **Teacher** | `teacher.sharma@classroom.edu` | `teacher123` | Aggregated topic confusion & support signals |
-| **Admin** | `admin@classroom.edu` | `admin123` | System analytics & smart classroom management |
+1. Build the production static bundle:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+2. The compiled static website files will be generated in `frontend/dist`.
+3. GitHub Actions (`.github/workflows/deploy.yml`) automatically builds and deploys `frontend/dist` to GitHub Pages upon pushing to the `main` branch.
 
 ---
 
-## 📑 Documentation
+## 📑 Detailed Documentation
 
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md): System data flow, privacy boundaries, database schema, and smart signal logic.
-- [DEMO_GUIDE.md](docs/DEMO_GUIDE.md): Step-by-step SIH judge demonstration script.
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md): LocalStorage data flow, privacy boundaries, and smart signal deterministic rules.
+- [DEMO_GUIDE.md](docs/DEMO_GUIDE.md): Step-by-step SIH judge demonstration walkthrough.
